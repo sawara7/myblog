@@ -1,21 +1,33 @@
 <template>
     <div id="app" class="blog">
-        <p>YOKOSO SAWARA7's Blog </p>
-        <v-app id="inspire">
-            <v-responsive :aspect-ratio="16/9">
-                <v-card class="mx-auto">
-                    <div v-for="(a,index) in articles" :key="index">
-                        <v-card-title>{{ a.title }},{{ a.date }}</v-card-title>
-                        <v-card-text>{{ a.contents }}</v-card-text>
-                    </div>
-                </v-card>
-            </v-responsive>
+        <v-app id="inspire">            
+            <v-card :width="width" class="mx-auto">
+                <v-responsive :aspect-ratio="16/9">
+                    <v-img
+                        v-if="media"
+                        class="white--text"
+                        src="img/yashio1.jpeg"
+                        >
+                    <p>YOKOSO SAWARA7's Blog </p>
+                    </v-img>
+                </v-responsive>
+                <div v-for="(a,index) in articles" :key="index">
+                    <v-card-title>{{ a.title }}</v-card-title>
+                    <v-card-text>{{ a.date }}:{{ a.contents }}</v-card-text>
+                </div>
+            </v-card>
+            <v-card height="150">
+                <v-footer absolute class="font-weight-medium">
+                    <v-flex text-center xs12>
+                    {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+                    </v-flex>
+                </v-footer>
+            </v-card>
         </v-app>
     </div>
 </template>
 
 <script>
-
 export default {
     name: "blog",
     data() {
@@ -27,8 +39,9 @@ export default {
             outlined: false,
             elevation: undefined,
             raised: false,
-            width: 344,
+            width: "500",
             height: undefined,
+            ref: "sample",
             articles: [
                 // {
                 // title:    "title",
@@ -49,7 +62,7 @@ export default {
                 if (result.val()) {
                     this.articles = result.val();
                 }
-            })
+            });
     }
 };
 </script>
