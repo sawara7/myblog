@@ -11,5 +11,4 @@ yarn-error.log
 *.njsproj
 *.sln
 *.cache
-package-lock.json
 package.json
