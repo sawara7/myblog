@@ -1,4 +1,4 @@
-# myblog
+# myblog_firebase
 
 > A Vue.js project
 

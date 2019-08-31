@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <myMenuBar/>
+    <myLogin/>
     <myEdit/>
     <myFooter/>
   </v-app>
@@ -10,6 +11,7 @@
   import myMenuBar  from "../components/Menu.vue";
   import myEdit     from "../components/Editor.vue";
   import myFooter   from "../components/Footer.vue";
+  import myLogin    from "../components/GoogleLogin";
 
   export default{
     data() {
@@ -18,7 +20,8 @@
     components: {
       myMenuBar: myMenuBar,
       myEdit   : myEdit,
-      myFooter : myFooter
+      myFooter : myFooter,
+      myLogin  : myLogin
       }
     };
 </script>
