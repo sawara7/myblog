@@ -1,4 +1,3 @@
-    
 <template>
   <v-container fluid>
     <v-layout wrap>
@@ -7,7 +6,7 @@
       class = "pa-2"
       >
         <v-app-bar-nav-icon
-         to="edit">
+         to="/">
         </v-app-bar-nav-icon>
         <v-toolbar-title
          class="display-1"

@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import myMenuBar  from "../components/Menu.vue";
-  import myContext  from "../components/Context.vue";
-  import myFooter   from "../components/Footer.vue";
+  import myMenuBar  from "../../components/blog/Menu.vue";
+  import myContext  from "../../components/blog/Context.vue";
+  import myFooter   from "../../components/blog/Footer.vue";
 
   export default{
     data () {

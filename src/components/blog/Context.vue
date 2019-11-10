@@ -11,8 +11,13 @@
                 <v-card 
                 elevation=1
                 class="pa-2">
-                    <div
-                        class ="preview title myclass1"
+                <div :class="{
+                        'preview'  : true,
+                        'myclass1' : true,
+                        'display-2': $vuetify.breakpoint.smAndDown,
+                        'headline': $vuetify.breakpoint.mdOnly,
+                        'title': $vuetify.breakpoint.lgAndUp
+                        }"
                         v-html ="preview()"
                         >
                     </div>
@@ -57,7 +62,7 @@
 
 <style lang="scss" scoped>
 .myclass1 {
-    letter-spacing  :  .3em;
+    letter-spacing  :  .2em;
     line-height     : 1.5em;
 }
 </style>

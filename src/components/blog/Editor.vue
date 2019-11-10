@@ -79,7 +79,8 @@ export default {
     data() {
         let d = new Date();
         return {
-            id : -1,
+            id : 0,
+            isNewArticle : false,
             article : {
               title    : 'titles',
               contents : 'contetnsss',
@@ -88,29 +89,29 @@ export default {
             rules: [v => v.length <= 500 || 'Max 25 characters']
         };
     },
-    props: ['selectedID'],
     methods: {
-        preview: function() {
-          if (!this.selectedID){
-            this.title='';
-            this.contents='';
-            this.date='';
-          }
-          firebase.
-          database().
-          ref('articles/'+ "4/").
-          update(this.article)
-        },
         save: function() {
-          if (this.id === -1){
-            this.id = "5"
+          let aRef = firebase.database().ref('articles/');
+          if (this.isNewArticle){
+              aRef.child(String(this.id)).set(this.article);
+          }else{
+              aRef.child(String(this.id)).update(this.article);
           }
-          firebase.
-          database().
-          ref('articles/'+ "4/").
-          update(this.article)
+          this.$router.push("/" + this.id);
         }
-    }
+    },
+    created: function () {
+      let pathID = this.$route.path.replace(/[^0-9]/g, '');
+      let aRef = firebase.database().ref('articles/');
+      if (pathID===''){
+        this.isNewArticle = true;
+        aRef.on("value", (value) => {this.id = Object.keys(value.val()).length});
+      }else{
+        this.id = pathID;
+        aRef.child(this.id).on("value", (value) => {
+          this.article = value.val()});
+      }
+  }
 }
 </script>
 

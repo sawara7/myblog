@@ -1,10 +1,14 @@
 {
   "rules": {
-    ".read": true,
+    ".read": false,
     ".write": false,
+    "admin-uid": {
+      ".read": "root.child('admin-uid').child(auth.uid).exists()",
+      ".write": false
+    },
     "articles": {
       ".read": true,
-      ".write": false
+      ".write": "root.child('admin-uid').child(auth.uid).exists()"
     }
   }
 }
